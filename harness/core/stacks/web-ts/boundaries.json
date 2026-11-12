@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "layers": [],
+  "ignore": [
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/*.min.js",
+    "**/*.d.ts",
+    "**/*.d.mts",
+    "**/*.d.cts",
+    "harness/core/**"
+  ]
+}
