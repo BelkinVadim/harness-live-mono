@@ -277,6 +277,77 @@
           "fragment": "3be8f90c710355637478fc4c82d636de09f590d11b74b4d893e18725fbdc7e07"
         }
       ]
+    },
+    {
+      "id": "20261112T124633Z-d35bd6",
+      "command": "apply-external",
+      "version": "1.0.0-rc.1",
+      "at": "2026-11-12T12:46:33Z",
+      "actor": "Vadim Belkin <belkinvadimka@gmail.com>",
+      "operations": [
+        {
+          "type": "external",
+          "host": "github",
+          "kind": "ruleset",
+          "address": "harness",
+          "before": null,
+          "after": {
+            "enforcement": "active",
+            "target": "branch",
+            "include": [
+              "~DEFAULT_BRANCH"
+            ],
+            "exclude": [],
+            "bypass_actors": [],
+            "rules": [
+              {
+                "type": "required_status_checks",
+                "contexts": [
+                  "harness-verify",
+                  "harness-ai-review-gate"
+                ],
+                "strict": false
+              },
+              {
+                "type": "pull_request",
+                "required_approving_review_count": 0,
+                "require_code_owner_review": false,
+                "dismiss_stale_reviews_on_push": false,
+                "require_last_push_approval": false,
+                "required_review_thread_resolution": false
+              },
+              {
+                "type": "deletion"
+              },
+              {
+                "type": "non_fast_forward"
+              }
+            ]
+          }
+        },
+        {
+          "type": "external",
+          "host": "github",
+          "kind": "secret",
+          "address": "CLAUDE_CODE_OAUTH_TOKEN",
+          "module": "reviewer.pr",
+          "before": null,
+          "after": {
+            "set": true
+          }
+        },
+        {
+          "type": "external",
+          "host": "github",
+          "kind": "secret",
+          "address": "HARNESS_ADMIN_TOKEN",
+          "module": "exceptions-workflow",
+          "before": null,
+          "after": {
+            "set": true
+          }
+        }
+      ]
     }
   ],
   "exceptions": [],
