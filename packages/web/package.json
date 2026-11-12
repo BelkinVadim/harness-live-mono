@@ -1,0 +1,13 @@
+{
+  "name": "@acme/web",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@acme/core": "workspace:*"
+  }
+}
