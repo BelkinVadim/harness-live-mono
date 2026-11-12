@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PROJECT_DIR}/harness/core/runtime.mjs",
+              "hook",
+              "post-edit"
+            ],
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

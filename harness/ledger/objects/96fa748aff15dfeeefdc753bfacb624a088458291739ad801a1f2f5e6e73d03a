@@ -1,0 +1,23 @@
+<!-- harness:start id=map -->
+## Карта проекта (harness-kit)
+
+Раздел ведёт harness-kit по `harness.config.yaml`. Пути здесь — карта: файлы остаются на своих местах.
+
+- Единая проверка перед готовностью работы: `scripts/verify`.
+- Архитектура, слои и границы модулей: `docs/ARCHITECTURE.md`.
+- Инварианты системы: `docs/INVARIANTS.md`.
+- Уровни риска путей и владельцы: `docs/RISK.md`.
+- Правила ревью: `REVIEW.md`.
+- Конфиг harness: `harness.config.yaml`.
+- Пакеты: `packages/core`, `packages/web`.
+- Файлы проекта, которые harness никогда не трогает: `harness/local/`.
+- Уровень зрелости harness: 1; проверки пока в режиме наблюдения (`observe`).
+<!-- harness:end -->
+# acme monorepo
+
+pnpm workspace with two packages:
+
+- `packages/core` — domain logic (money, orders). No dependencies on other packages.
+- `packages/web` — UI; depends on `@acme/core`.
+
+Run `pnpm typecheck` and `pnpm test` from the root before every commit.
