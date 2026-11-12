@@ -14,34 +14,34 @@ paths:
   - pattern: "docs/RISK.md"
     risk: 2
     why: "уровни риска и владельцы"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "**/auth/**"
     risk: 2
     why: "аутентификация и права"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "**/payments/**"
     risk: 2
     why: "платежи"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "**/billing/**"
     risk: 2
     why: "платежи"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: ".github/workflows/**"
     risk: 2
     why: "CI"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "scripts/verify"
     risk: 2
     why: "CI: единая проверка"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "harness.config.yaml"
     risk: 2
     why: "CI: режимы проверок и ворота harness"
-    owners: []
+    owners: ["@BelkinVadim"]
   - pattern: "harness/core/**"
     risk: 2
     why: "CI: рантайм и задачи harness"
-    owners: []
+    owners: ["@BelkinVadim"]
 ```
 
