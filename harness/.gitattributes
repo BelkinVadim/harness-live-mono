@@ -1,2 +1,0 @@
-# harness-kit (ADR-0072): копии журнала хранятся байт в байт, git не меняет их концы строк.
-ledger/objects/** -text -filter -ident -working-tree-encoding
