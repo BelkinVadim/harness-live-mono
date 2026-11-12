@@ -348,6 +348,25 @@
           }
         }
       ]
+    },
+    {
+      "id": "20261112T124805Z-52d95f",
+      "command": "sync",
+      "version": "1.0.0-rc.1",
+      "at": "2026-11-12T12:48:05Z",
+      "actor": "Vadim Belkin <belkinvadimka@gmail.com>",
+      "operations": [
+        {
+          "type": "block",
+          "path": ".github/CODEOWNERS",
+          "owner_class": "shared",
+          "before": null,
+          "after": "44f92b08c6fcda9f55de3a77d82c301bfb95676f0d180e82b87c92949738f8b2",
+          "module": "codeowners",
+          "id": "codeowners",
+          "fragment": "996eefea0d4eb8e18fdfde45b70f238a0a0a61270a874410d2d4b6e7c3bc17a8"
+        }
+      ]
     }
   ],
   "exceptions": [],

@@ -1,0 +1,12 @@
+# harness:start id=codeowners
+# Владельцы опасных путей из docs/RISK.md (harness-kit sync). Правьте владельцев там:
+# этот блок перегенерируется. Последнее совпавшее правило важнее, поэтому блок стоит в конце.
+/docs/RISK.md @BelkinVadim
+**/auth/ @BelkinVadim
+**/payments/ @BelkinVadim
+**/billing/ @BelkinVadim
+/.github/workflows/ @BelkinVadim
+/scripts/verify @BelkinVadim
+/harness.config.yaml @BelkinVadim
+/harness/core/ @BelkinVadim
+# harness:end
