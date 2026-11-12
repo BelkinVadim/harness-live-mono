@@ -1,0 +1,38 @@
+# harness-kit: задача harness-ai-review-gate (ворота AI-ревью, уровень 2) — ждёт вердикт AI-ревью на head-коммите PR.
+# Файл принадлежит harness: его заменяют `harness-kit upgrade` и `sync`, удаляет `uninstall`;
+# ручная правка будет найдена по хешу из журнала harness/ledger.json. Режим ворот задаёт
+# harness.config.yaml (уровень, checks.ai-review.mode), а не этот файл.
+name: harness-ai-review-gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  # Очередь слияния присылает своё событие: без него обязательная проверка в ней не придёт.
+  merge_group:
+
+permissions:
+  contents: read
+  checks: read
+  pull-requests: read
+
+concurrency:
+  group: harness-ai-review-gate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  harness-ai-review-gate:
+    name: harness-ai-review-gate
+    runs-on: ubuntu-latest
+    # Рантайм ждёт вердикт сам до срока из конфига; предел задачи чуть больше.
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - run: node harness/core/runtime.mjs ai-review-gate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HARNESS_JOB_TIMEOUT_MINUTES: "30"

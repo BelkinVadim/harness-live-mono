@@ -11,7 +11,7 @@
 - Конфиг harness: `harness.config.yaml`.
 - Пакеты: `packages/core`, `packages/web`.
 - Файлы проекта, которые harness никогда не трогает: `harness/local/`.
-- Уровень зрелости harness: 1; проверки пока в режиме наблюдения (`observe`).
+- Уровень зрелости harness: 2; проверки пока в режиме наблюдения (`observe`).
 <!-- harness:end -->
 # acme monorepo
 
