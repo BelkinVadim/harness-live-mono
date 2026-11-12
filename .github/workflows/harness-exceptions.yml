@@ -1,0 +1,37 @@
+# harness-kit: задача harness-exceptions (аварийный обход, уровень 2) — возвращает ворота
+# истёкших обходов. Файл принадлежит harness: его заменяют `harness-kit upgrade` и `sync`,
+# удаляют `uninstall` и `detach`; ручная правка будет найдена по хешу из журнала
+# harness/ledger.json. Срок обхода задаёт `harness-kit break-glass --ttl`, а не этот файл.
+name: harness-exceptions
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+
+concurrency:
+  group: harness-exceptions
+  cancel-in-progress: false
+
+jobs:
+  harness-exceptions:
+    name: harness-exceptions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # ledger-sync сверяет историю ветки PR с веткой по умолчанию.
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - run: node harness/core/runtime.mjs exceptions restore
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HARNESS_ADMIN_TOKEN: ${{ secrets.HARNESS_ADMIN_TOKEN }}
